@@ -5,7 +5,7 @@ This project demonstrates how to use DBT (Data Build Tool) with Decodable. It in
 ## Features
 
 - Example DBT models
-- Configuration for Decodable integration
+- Sample Github Actions Workflow
 
 ## Getting Started
 
