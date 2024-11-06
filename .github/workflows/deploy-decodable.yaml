@@ -1,0 +1,22 @@
+name: Deploy Decodable resources
+
+on:
+  push:
+    branches:
+      - main
+  # pull_request:
+  workflow_dispatch:
+
+jobs:
+  setup-and-apply:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Run Decodable DBT
+      uses: docker://seetasomagani/dbt-decodable:0.1
+      with:
+        entrypoint: /usr/local/bin/gh_action_entrypoint.sh
+        args: ${{ secrets.DECODABLE_REFRESH_TOKEN }} ${{ vars.DECODABLE_ACCOUNT_NAME }} ${{ vars.DECODABLE_PROFILE_NAME }}
